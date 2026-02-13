@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine House</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');body { margin: 0; font-family: Arial, Helvetica, sans-serif; height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #a1c4fd, #c2e9fb); overflow: hidden; }
+
+/* House Page */ .house-page { display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; height: 100%; position: relative; } .house { width: 300px; height: 200px; background: #ff9a9e; position: relative; border-radius: 10px; display: flex; justify-content: center; align-items: flex-start; flex-direction: column; } .roof { width: 0; height: 0; border-left: 160px solid transparent; border-right: 160px solid transparent; border-bottom: 100px solid #ff6f91; position: absolute; top: -100px; left: -30px; } .door { width: 60px; height: 80px; background: #6b4226; position: absolute; bottom: 0; left: calc(50% - 30px); cursor: pointer; border-radius: 5px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; }
+
+/* Valentine Card inside house */ .card { display: none; text-align: center; background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 420px; position: relative; z-index: 2; }
+
+.photo { width: 200px; height: 260px; object-fit: cover; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+.buttons { position: relative; height: 150px; }
+
+.balloon { position: absolute; padding: 15px 20px; border-radius: 50%; color: white; font-weight: bold; cursor: pointer; animation: float 3s ease-in-out infinite; }
+
+#yesBtn { background: #ff2e7a; left: 40px; } #noBtn { background: #333; right: 40px; }
+
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+/* Love Page */ .love-page { display: none; height: 100vh; width: 100%; justify-content: center; align-items: center; flex-direction: column; background: linear-gradient(135deg, #ff4e9b, #ff758c); color: white; text-align: center; position: relative; overflow: hidden; padding: 20px; }
+
+.love-page h2 { font-size: 42px; animation: heartbeat 1s infinite; z-index: 2; margin-bottom: 20px; }
+
+@keyframes heartbeat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+.letter-container { display: none; max-height: 60%; width: 80%; background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px; overflow-y: auto; font-family: 'Great Vibes', cursive; font-size: 22px; line-height: 1.8; border-right: 3px solid white; white-space: normal; }
+
+.heart { position: absolute; color: red; font-size: 24px; animation: fall linear infinite; }
+
+@keyframes fall { 0% { transform: translateY(-10vh); opacity: 1; } 100% { transform: translateY(110vh); opacity: 0; } }
+
+.firework { position: absolute; width: 6px; height: 6px; background: yellow; border-radius: 50%; animation: explode 1s ease-out forwards; }
+
+@keyframes explode { to { transform: scale(15); opacity: 0; } } </style>
+
+</head>
+<body><div class="house-page" id="housePage">
+  <div class="house">
+    <div class="roof"></div>
+    <div class="door" id="door">TAP HERE</div>
+  </div>
+</div><div class="card" id="mainCard">
+  <h1>Will you be my Valentine NAOMI? 💖</h1>
+  <img src="HER-PHOTO.jpg" alt="Naomi" class="photo" />
+  <div class="buttons">
+    <div class="balloon" id="yesBtn">YES ❤️</div>
+    <div class="balloon" id="noBtn">NO 💔</div>
+  </div>
+</div><div class="love-page" id="lovePage">
+  <h2 id="loveMessage">I LOVE YOU SO MUCH NAOMI ❤️</h2>
+  <div class="letter-container" id="letterContainer"></div>
+</div><script>
+const door = document.getElementById('door');
+const mainCard = document.getElementById('mainCard');
+const housePage = document.getElementById('housePage');
+const noBtn = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
+const lovePage = document.getElementById('lovePage');
+const letterContainer = document.getElementById('letterContainer');
+const loveMessage = document.getElementById('loveMessage');
+
+const bgAudio = new Audio('love-nwantiti.mp3');
+bgAudio.loop = true;
+document.addEventListener('click', () => { if(bgAudio.paused) bgAudio.play(); }, { once: true });
+
+do...
